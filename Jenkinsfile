@@ -1,19 +1,13 @@
 pipeline {
     agent any
     tools {
-        nodejs 'node20'
+        nodejs 'nodejs20'
     }
     stages {
         stage('Node Config') {
             steps {
-                    script {
-                    try {
-                        sh 'npm config ls'
-                    } catch (Exception e) {
-                        error "npm install failed: ${e.message}"
-                    }
-                }
-                }
+                sh 'npm config ls'
+            }
         }
         stage('Clone Repository') {
             steps {
