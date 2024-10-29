@@ -37,10 +37,9 @@ pipeline {
                 sh 'npm run build'
             }
         }
-        stage('Deploy') {
+        stage('Cleanup Workspace') {
             steps {
-                // Add your deployment commands here
-                sh 'echo "Deploying to server..."' // Placeholder command
+                cleanWs() // This clears the workspace before the build starts
             }
         }
     }
