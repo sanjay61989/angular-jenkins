@@ -11,6 +11,11 @@ pipeline {
         booleanParam(name: 'BUILD_MEAL_PLANNER', defaultValue: false, description: 'Build meal-planner')
     }
     stages {
+        stage('Cleanup Workspace') {
+            steps {
+                cleanWs() // This clears the workspace before the build starts
+            }
+        }
         stage('Clone Repositories') {
             steps {
                 script {
