@@ -61,23 +61,20 @@ pipeline {
                 }
             }
         }
-        stage('Build Nginx Image') {
-            steps {
-                script {
-                    dir('mfe-shell') {
-                        // sh 'chmod 666 /var/run/docker.sock'
-                        sh 'docker build -t my-nginx-image .'
-                    }
-                }
-            }
-        }
         stage('Deploy') {
             steps {
                 script {
-                    // Add your deployment steps here
-                    sh 'docker run -d -p 80:80 my-nginx-image'
+                    dir('mfe-shell') {
+                        sh 'rm -rf /usr/share/nginx/html/*'
+                        sh 'cp -r /tmp/build/* /usr/share/nginx/html'
+                        sh 'nginx/nginx.conf /etc/nginx/nginx.conf'                    
+                        sh 'nginx -t'
+                        sh 'systemctl stop nginx'
+                        sh 'systemctl start nginx'
+                        
+                    }
                 }
             }
-        }
+        }       
     }
 }
