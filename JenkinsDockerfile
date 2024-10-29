@@ -14,8 +14,8 @@ pipeline {
         stage('Clone Repositories') {
             steps {                
                 script {
-                    sh 'git clone https://github.com/sanjay61989/angular-jenkins.git .'
-                    if (params.BUILD_MFE_SHELL) {
+                    // sh 'git clone https://github.com/sanjay61989/angular-jenkins.git .'
+                    if (params.BUILD_MFE_SHELL) {                        
                         sh 'git clone https://github.com/sanjay61989/mfe-shell.git'
                     }
                     if (params.BUILD_GYM_TRACKER) {
