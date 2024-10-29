@@ -13,17 +13,17 @@ pipeline {
     stages {
         stage('Clone Repositories') {
             steps {                
-                script {                                                                  
+                script {
+                    if (params.CLEAN_WORKSPACE) {
+                        cleanWs()
+                    }                                                                  
                     if (params.BUILD_MFE_SHELL) {
-                        sh 'rm -rf mfe-shell'
                         sh 'git clone https://github.com/sanjay61989/mfe-shell.git'
                     }
                     if (params.BUILD_GYM_TRACKER) {
-                        sh 'rm -rf gym-tracker'
                         sh 'git clone https://github.com/sanjay61989/gym-tracker.git'
                     }
                     if (params.BUILD_MEAL_PLANNER) {
-                        sh 'rm -rf meal-planner'
                         sh 'git clone https://github.com/sanjay61989/meal-planner.git'
                     }                    
                 }
