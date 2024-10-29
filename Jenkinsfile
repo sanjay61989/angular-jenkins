@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    parameters {
+        string(name: 'GIT_REPO_URL', description: 'Git repository URL') // No default value
+    }
     tools {
         nodejs 'nodejs20'
     }
@@ -12,7 +15,13 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 // Correct the URL to just use the repository URL
-                git credentialsId: 'git-credentials', url: 'https://github.com/sanjay61989/mfe-shell.git'
+                script {
+                    // Check if the GIT_REPO_URL is provided
+                    if (!params.GIT_REPO_URL) {
+                        error('GIT_REPO_URL parameter is missing.')
+                    }
+                }
+                git credentialsId: 'git-credentials', url: "${params.GIT_REPO_URL}"
             }
         }
 
