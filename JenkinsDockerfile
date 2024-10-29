@@ -1,6 +1,7 @@
 pipeline {
     tools {
         dockerTool 'docker'  // Use the Docker tool configured in Jenkins
+        nodejs 'nodejs20'
     }
     agent any
 
