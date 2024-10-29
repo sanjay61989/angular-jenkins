@@ -4,12 +4,18 @@ pipeline {
         nodejs 'node20'
     }
     stages {
+        stage('Node Config') {
+            steps {
+                sh 'npm config ls'
+            }
+        }
         stage('Clone Repository') {
             steps {
                 // Correct the URL to just use the repository URL
                 git credentialsId: 'git-credentials', url: 'https://github.com/sanjay61989/mfe-shell.git'
             }
         }
+
         stage('Install Dependencies') {
             steps {
                 sh 'ls -l'
