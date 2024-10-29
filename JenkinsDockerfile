@@ -35,7 +35,7 @@ pipeline {
                             sh 'npm run build'
                             sh 'mkdir -p /tmp/build/mfe-shell/mfe-shell'
                             sh 'cp -rf dist/shell/browser/* /tmp/build/mfe-shell/mfe-shell'
-                            sh 'rm -rf /usr/share/nginx/html/mfe-shell'
+                            sh 'sudo rm -rf /usr/share/nginx/html/mfe-shell'
                         }
                     }
                     if (params.BUILD_GYM_TRACKER) {
@@ -44,7 +44,7 @@ pipeline {
                             sh 'npm run build'
                             sh 'mkdir -p /tmp/build/mfe-shell/gym-tracker'
                             sh 'cp -rf dist/gym-tracker/browser/* /tmp/build/mfe-shell/gym-tracker'
-                            sh 'rm -rf /usr/share/nginx/html/gym-tracker'
+                            sh 'sudo rm -rf /usr/share/nginx/html/gym-tracker'
                         }
                     }
                     if (params.BUILD_MEAL_PLANNER) {
@@ -53,7 +53,7 @@ pipeline {
                             sh 'npm run build'
                             sh 'mkdir -p /tmp/build/mfe-shell/meal-planner'
                             sh 'cp -r dist/meal-planner/browser/* /tmp/build/mfe-shell/meal-planner'
-                            sh 'rm -rf /usr/share/nginx/html/meal-planner'
+                            sh 'sudo rm -rf /usr/share/nginx/html/meal-planner'
                         }
                     }
                 }
