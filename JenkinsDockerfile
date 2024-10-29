@@ -3,7 +3,7 @@ pipeline {
         dockerTool 'docker'  // Use the Docker tool configured in Jenkins
     }
     agent {
-        docker {
+        dockerTool {
             image 'node:20-alpine'
             args '-u root' // to run as root for installing packages
         }
