@@ -6,9 +6,9 @@ pipeline {
     agent any
 
     parameters {
-        booleanParam(name: 'BUILD_MFE_SHELL', defaultValue: false, description: 'Build mfe-shell')
-        booleanParam(name: 'BUILD_GYM_TRACKER', defaultValue: false, description: 'Build gym-tracker')
-        booleanParam(name: 'BUILD_MEAL_PLANNER', defaultValue: false, description: 'Build meal-planner')
+        booleanParam(name: 'BUILD_MFE_SHELL', description: 'Build mfe-shell')
+        booleanParam(name: 'BUILD_GYM_TRACKER', description: 'Build gym-tracker')
+        booleanParam(name: 'BUILD_MEAL_PLANNER', description: 'Build meal-planner')
     }
     stages {
         stage('Cleanup Workspace') {
