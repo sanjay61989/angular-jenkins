@@ -76,7 +76,7 @@ pipeline {
                     '''
                     }
                 }
-                if (!params.CLEAN_WORKSPACE) {
+                if (params.CLEAN_WORKSPACE==false) {
                     cleanWs()
                 }  
             }
