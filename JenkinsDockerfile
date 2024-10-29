@@ -1,13 +1,14 @@
 pipeline {
+    tools {
+        dockerTool 'docker'  // Use the Docker tool configured in Jenkins
+    }
     agent {
         docker {
             image 'node:20-alpine'
             args '-u root' // to run as root for installing packages
         }
     }
-    tools {
-        docker 'docker'  // Use the Docker tool configured in Jenkins
-    }
+
     parameters {
         booleanParam(name: 'BUILD_MFE_SHELL', defaultValue: false, description: 'Build mfe-shell')
         booleanParam(name: 'BUILD_GYM_TRACKER', defaultValue: false, description: 'Build gym-tracker')
