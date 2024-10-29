@@ -76,7 +76,9 @@ pipeline {
                     '''
                     }
                 }
-                cleanWs()
+                if (!params.CLEAN_WORKSPACE) {
+                    cleanWs()
+                }  
             }
         }
     }
