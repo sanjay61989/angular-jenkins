@@ -33,7 +33,7 @@ pipeline {
                         dir('mfe-shell') {
                             sh 'npm install'
                             sh 'npm run build'
-                            sh 'mkdir -p /tmp/build/mfe-shell'
+                            sh 'mkdir -p /tmp/build/mfe-shell/mfe-shell'
                             sh 'cp -rf dist/shell/browser/* /tmp/build/mfe-shell/mfe-shell'
                         }
                     }
