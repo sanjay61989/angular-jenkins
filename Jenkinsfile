@@ -5,9 +5,13 @@ pipeline {
     }
     stages {
         stage('Node Config') {
-            steps {
-                sh 'npm config ls'
-            }
+            script {
+                    try {
+                        sh 'npm config ls'
+                    } catch (Exception e) {
+                        error "npm install failed: ${e.message}"
+                    }
+                }
         }
         stage('Clone Repository') {
             steps {
