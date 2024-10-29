@@ -37,6 +37,11 @@ pipeline {
                 sh 'npm run build'
             }
         }
+        stage('Archive Artifacts') {
+            steps {
+                archiveArtifacts artifacts: 'dist/gym-tracker/browser/**', allowEmptyArchive: false
+            }
+        }
         stage('Cleanup Workspace') {
             steps {
                 cleanWs() // This clears the workspace before the build starts

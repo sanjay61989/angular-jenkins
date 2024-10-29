@@ -1,0 +1,76 @@
+pipeline {
+    agent {
+        docker {
+            image 'node:20-alpine'
+            args '-u root' // to run as root for installing packages
+        }
+    }
+    parameters {
+        booleanParam('BUILD_MFE_SHELL', true, 'Build mfe-shell')
+        booleanParam('BUILD_GYM_TRACKER', true, 'Build gym-tracker')
+        booleanParam('BUILD_MEAL_PLANNER', true, 'Build meal-planner')
+    }
+    stages {
+        stage('Clone Repositories') {
+            steps {
+                script {
+                    if (params.BUILD_MFE_SHELL) {
+                        sh 'git clone https://github.com/sanjay61989/mfe-shell.git'
+                    }
+                    if (params.BUILD_GYM_TRACKER) {
+                        sh 'git clone https://github.com/sanjay61989/gym-tracker.git'
+                    }
+                    if (params.BUILD_MEAL_PLANNER) {
+                        sh 'git clone https://github.com/sanjay61989/meal-planner.git'
+                    }
+                }
+            }
+        }
+        stage('Build Projects') {
+            steps {
+                script {
+                    if (params.BUILD_MFE_SHELL) {
+                        dir('mfe-shell') {
+                            sh 'npm install'
+                            sh 'npm run build'
+                            sh 'mkdir -p /app/combined-dist/mfe-shell'
+                            sh 'cp -rf dist/shell/browser/* /app/combined-dist/mfe-shell'
+                        }
+                    }
+                    if (params.BUILD_GYM_TRACKER) {
+                        dir('gym-tracker') {
+                            sh 'npm install'
+                            sh 'npm run build'
+                            sh 'mkdir -p /app/combined-dist/mfe-shell/gym-tracker'
+                            sh 'cp -rf dist/gym-tracker/browser/* /app/combined-dist/mfe-shell/gym-tracker'
+                        }
+                    }
+                    if (params.BUILD_MEAL_PLANNER) {
+                        dir('meal-planner') {
+                            sh 'npm install'
+                            sh 'npm run build'
+                            sh 'mkdir -p /app/combined-dist/mfe-shell/meal-planner'
+                            sh 'cp -r dist/meal-planner/browser/* /app/combined-dist/mfe-shell/meal-planner'
+                        }
+                    }
+                }
+            }
+        }
+        stage('Build Nginx Image') {
+            steps {
+                script {
+                    // Use a Dockerfile to build the Nginx image
+                    sh 'docker build -t my-nginx-image .'
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                script {
+                    // Add your deployment steps here
+                    sh 'docker run -d -p 80:80 my-nginx-image'
+                }
+            }
+        }
+    }
+}
