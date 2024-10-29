@@ -8,11 +8,15 @@ pipeline {
         booleanParam(name: 'BUILD_MFE_SHELL', description: 'Build mfe-shell')
         booleanParam(name: 'BUILD_GYM_TRACKER', description: 'Build gym-tracker')
         booleanParam(name: 'BUILD_MEAL_PLANNER', description: 'Build meal-planner')
+        booleanParam(name: 'CLEAN_WORKSPACE', description: 'Build meal-planner')
     }
     stages {
         stage('Clone Repositories') {
-            steps {
+            steps {                
                 script {
+                    if (params.CLEAN_WORKSPACE) {
+                        cleanWs()
+                    }                    
                     if (params.BUILD_MFE_SHELL) {
                         sh 'git clone https://github.com/sanjay61989/mfe-shell.git'
                     }
@@ -21,7 +25,7 @@ pipeline {
                     }
                     if (params.BUILD_MEAL_PLANNER) {
                         sh 'git clone https://github.com/sanjay61989/meal-planner.git'
-                    }
+                    }                    
                 }
             }
         }
@@ -72,7 +76,7 @@ pipeline {
                     '''
                     }
                 }
-                // cleanWs()
+                
             }
         }
     }
