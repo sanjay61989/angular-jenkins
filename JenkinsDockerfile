@@ -65,9 +65,9 @@ pipeline {
                 script {
                     dir('mfe-shell') {                    
                         sh '''                        
-                         cp -r /tmp/build/mfe-shell/* /usr/share/nginx/html
-                         cp /var/lib/jenkins/workspace/myapp/nginx.conf /etc/nginx/nginx.conf
-                         nginx -t
+                         sudo cp -r /tmp/build/mfe-shell/* /usr/share/nginx/html
+                         sudo cp /var/lib/jenkins/workspace/myapp/nginx.conf /etc/nginx/nginx.conf
+                         sudo nginx -t
                          sudo systemctl stop nginx
                          sudo systemctl start nginx
                         echo "Nginx deployment completed successfully."
