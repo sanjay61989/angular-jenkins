@@ -75,10 +75,10 @@ pipeline {
                         echo "Nginx deployment completed successfully."
                     '''
                     }
-                }
-                if (params.CLEAN_WORKSPACE==false) {
-                    cleanWs()
-                }  
+                    if (params.CLEAN_WORKSPACE==false) {
+                        cleanWs()
+                    }  
+                }            
             }
         }
     }
