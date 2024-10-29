@@ -34,7 +34,7 @@ pipeline {
                             sh 'npm install'
                             sh 'npm run build'
                             sh 'sudo mkdir -p /tmp/build/mfe-shell/mfe-shell'
-                            sh 'cp -rf dist/shell/browser/* /tmp/build/mfe-shell/mfe-shell'
+                            sh 'sudo cp -rf dist/shell/browser/* /tmp/build/mfe-shell/mfe-shell'
                             sh 'sudo rm -rf /usr/share/nginx/html/mfe-shell'                            
                         }
                     }
@@ -43,7 +43,7 @@ pipeline {
                             sh 'npm install'
                             sh 'npm run build'
                             sh 'sudo mkdir -p /tmp/build/mfe-shell/gym-tracker'
-                            sh 'cp -rf dist/gym-tracker/browser/* /tmp/build/mfe-shell/gym-tracker'
+                            sh 'sudo cp -rf dist/gym-tracker/browser/* /tmp/build/mfe-shell/gym-tracker'
                             sh 'sudo rm -rf /usr/share/nginx/html/gym-tracker'                                                  
                         }
                     }
@@ -52,7 +52,7 @@ pipeline {
                             sh 'npm install'
                             sh 'npm run build'
                             sh 'sudo mkdir -p /tmp/build/mfe-shell/meal-planner'
-                            sh 'cp -r dist/meal-planner/browser/* /tmp/build/mfe-shell/meal-planner'
+                            sh 'sudo cp -r dist/meal-planner/browser/* /tmp/build/mfe-shell/meal-planner'
                             sh 'sudo rm -rf /usr/share/nginx/html/meal-planner'
                         }
                     }
