@@ -14,9 +14,7 @@ pipeline {
         stage('Clone Repositories') {
             steps {                
                 script {
-                    if (params.CLEAN_WORKSPACE) {
-                        cleanWs()
-                    }                                                                  
+                    sh 'git clone https://github.com/sanjay61989/angular-jenkins.git .'
                     if (params.BUILD_MFE_SHELL) {
                         sh 'git clone https://github.com/sanjay61989/mfe-shell.git'
                     }
@@ -75,9 +73,7 @@ pipeline {
                         echo "Nginx deployment completed successfully."
                     '''
                     }
-                    if (params.CLEAN_WORKSPACE==false) {
-                        cleanWs()
-                    }  
+                    cleanWs()
                 }            
             }
         }
