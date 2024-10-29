@@ -72,10 +72,12 @@ pipeline {
                          systemctl start nginx
                         echo "Nginx deployment completed successfully."
                     '''
-                    }
-                    cleanWs()
+                    }                    
                 }            
             }
+        }
+        stage('cleanup') {
+            cleanWs()
         }
     }
 }
