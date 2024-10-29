@@ -10,7 +10,7 @@ pipeline {
         booleanParam(name: 'BUILD_GYM_TRACKER', description: 'Build gym-tracker')
         booleanParam(name: 'BUILD_MEAL_PLANNER', description: 'Build meal-planner')
     }
-    stages {        
+    stages {
         stage('Clone Repositories') {
             steps {
                 script {
@@ -71,6 +71,7 @@ pipeline {
                     '''
                     }
                 }
+                cleanWs()
             }
         }
     }
