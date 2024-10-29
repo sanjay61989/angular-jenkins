@@ -1,0 +1,36 @@
+{
+  "rules": {
+    "AbcComplexity": {
+      "enabled": true,
+      "maxComplexity": 10
+    },
+    "ClassSize": {
+      "enabled": true,
+      "maxMethods": 20,
+      "maxFields": 15
+    },
+    "DuplicateCaseStatement": {
+      "enabled": true
+    },
+    "UnusedPrivateField": {
+      "enabled": true
+    },
+    "UnusedPrivateMethod": {
+      "enabled": true
+    },
+    "VariableName": {
+      "enabled": true,
+      "pattern": "^[a-z][a-zA-Z0-9]*$"
+    },
+    "MethodName": {
+      "enabled": true,
+      "pattern": "^[a-z][a-zA-Z0-9]*$"
+    },
+    "ClassName": {
+      "enabled": true,
+      "pattern": "^[A-Z][a-zA-Z0-9]*$"
+    },
+    "PublicMethodCouldBePrivate": {
+      "enabled": true
+    },
+    "Tr

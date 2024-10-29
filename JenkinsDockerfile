@@ -5,10 +5,10 @@ pipeline {
             args '-u root' // to run as root for installing packages
         }
     }
-    parameters {
-        booleanParam('BUILD_MFE_SHELL', true, 'Build mfe-shell')
-        booleanParam('BUILD_GYM_TRACKER', true, 'Build gym-tracker')
-        booleanParam('BUILD_MEAL_PLANNER', true, 'Build meal-planner')
+   parameters {
+        booleanParam(name: 'BUILD_MFE_SHELL', defaultValue: false, description: 'Build mfe-shell')
+        booleanParam(name: 'BUILD_GYM_TRACKER', defaultValue: false, description: 'Build gym-tracker')
+        booleanParam(name: 'BUILD_MEAL_PLANNER', defaultValue: false, description: 'Build meal-planner')
     }
     stages {
         stage('Clone Repositories') {
