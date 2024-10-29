@@ -13,11 +13,7 @@ pipeline {
     stages {
         stage('Clone Repositories') {
             steps {                
-                script {
-                    sh 'export SUDO_ASKPASS=/usr/bin/ssh-askpass'  //# Adjust the path if needed
-                    if (params.CLEAN_WORKSPACE) {
-                        cleanWs()
-                    }                    
+                script {                                              
                     if (params.BUILD_MFE_SHELL) {
                         sh 'git clone https://github.com/sanjay61989/mfe-shell.git'
                     }
