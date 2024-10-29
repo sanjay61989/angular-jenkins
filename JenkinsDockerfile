@@ -65,16 +65,15 @@ pipeline {
             steps {
                 script {
                     dir('mfe-shell') {
-                        sh 'sudo rm -rf /usr/share/nginx/html/*'
-                        sh 'sudo cp -r /tmp/build/* /usr/share/nginx/html'
-                        sh 'sudo cp nginx/nginx.conf /etc/nginx/nginx.conf'                    
-                        sh 'sudo nginx -t'
-                        sh 'sudo systemctl stop nginx'
-                        sh 'sudo systemctl start nginx'
-                        
+                        sh 'rm -rf /usr/share/nginx/html/*'
+                        sh 'cp -r /tmp/build/* /usr/share/nginx/html'
+                        sh 'cp nginx/nginx.conf /etc/nginx/nginx.conf'
+                        sh 'nginx -t'
+                        sh 'systemctl stop nginx'
+                        sh 'systemctl start nginx'
                     }
                 }
             }
-        }       
+        }
     }
 }
