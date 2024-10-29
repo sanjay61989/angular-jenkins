@@ -13,13 +13,14 @@ pipeline {
                 // Use Node.js 20 installation
                 sh 'node -v'
                 sh 'npm -v'
-                // sh 'npm install'
+            // sh 'npm install'
             }
         }
         stage('Build Application') {
             steps {
-                // Build the Angular application
-                // sh 'ng build --prod'
+                // Build the Angular
+                sh 'npm -v'
+            // sh 'ng build --prod'
             }
         }
         stage('Deploy') {
