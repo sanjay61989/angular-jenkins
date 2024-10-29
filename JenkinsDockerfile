@@ -64,10 +64,8 @@ pipeline {
         stage('Build Nginx Image') {
             steps {
                 script {
-                    // Use a Dockerfile to build the Nginx image
-                    dir('myapp/mfe-shell') {
-                        sh 'docker build -t my-nginx-image .'
-                    }
+                      // Use a Dockerfile to build the Nginx image
+                    sh 'docker build -t my-nginx-image .'
                 }
             }
         }
