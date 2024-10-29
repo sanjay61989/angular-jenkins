@@ -3,10 +3,7 @@ pipeline {
         dockerTool 'docker'  // Use the Docker tool configured in Jenkins
     }
     agent {
-        docker {
-            image 'node:20-alpine'
-            args '--name docker-node' // list any args
-        }
+        any
     }
 
     parameters {
