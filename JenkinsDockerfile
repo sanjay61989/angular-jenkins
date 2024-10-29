@@ -8,7 +8,6 @@ pipeline {
         booleanParam(name: 'BUILD_MFE_SHELL', defaultValue:true,description: 'Build mfe-shell')
         booleanParam(name: 'BUILD_GYM_TRACKER', description: 'Build gym-tracker')
         booleanParam(name: 'BUILD_MEAL_PLANNER', description: 'Build meal-planner')
-        booleanParam(name: 'CLEAN_WORKSPACE', description: 'Build meal-planner')
     }
     stages {
         stage('Clone Repositories') {
