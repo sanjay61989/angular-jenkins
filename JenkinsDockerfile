@@ -34,6 +34,7 @@ pipeline {
                             sh 'npm run build'
                             sh 'mkdir -p /tmp/build/mfe-shell/mfe-shell'
                             sh 'cp -rf dist/shell/browser/* /tmp/build/mfe-shell/mfe-shell'
+                            sh 'sudo rm -rf /usr/share/nginx/html/mfe-shell'
                         }
                     }
                     if (params.BUILD_GYM_TRACKER) {
@@ -42,6 +43,7 @@ pipeline {
                             sh 'npm run build'
                             sh 'mkdir -p /tmp/build/mfe-shell/gym-tracker'
                             sh 'cp -rf dist/gym-tracker/browser/* /tmp/build/mfe-shell/gym-tracker'
+                            sh 'sudo rm -rf /usr/share/nginx/html/gym-tracker'
                         }
                     }
                     if (params.BUILD_MEAL_PLANNER) {
@@ -50,6 +52,7 @@ pipeline {
                             sh 'npm run build'
                             sh 'mkdir -p /tmp/build/mfe-shell/meal-planner'
                             sh 'cp -r dist/meal-planner/browser/* /tmp/build/mfe-shell/meal-planner'
+                            sh 'sudo rm -rf /usr/share/nginx/html/meal-planner'
                         }
                     }
                 }
@@ -59,9 +62,8 @@ pipeline {
             steps {
                 script {
                     dir('mfe-shell') {                    
-                        sh '''
-                        sudo rm -rf /usr/share/nginx/html/*
-                        sudo cp -r /tmp/build/* /usr/share/nginx/html
+                        sh '''                        
+                        sudo cp -r /tmp/build/mfe-shell/* /usr/share/nginx/html
                         sudo cp /var/lib/jenkins/workspace/myapp/nginx.conf /etc/nginx/nginx.conf
                         sudo nginx -t
                         sudo systemctl stop nginx
