@@ -11,17 +11,15 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 // Use Node.js 20 installation
-                script {
-                    def nodeHome = tool name: 'node20', type: 'NodeJSInstallation'
-                    env.PATH = "${nodeHome}/bin:${env.PATH}"
-                }
-                sh 'npm install'
+                sh 'node -v'
+                sh 'npm -v'
+                // sh 'npm install'
             }
         }
         stage('Build Application') {
             steps {
                 // Build the Angular application
-                sh 'ng build --prod'
+                // sh 'ng build --prod'
             }
         }
         stage('Deploy') {
