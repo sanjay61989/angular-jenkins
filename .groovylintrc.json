@@ -32,5 +32,6 @@
     },
     "PublicMethodCouldBePrivate": {
       "enabled": true
-    },
-    "Tr
+    }
+  }
+}

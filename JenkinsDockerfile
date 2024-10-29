@@ -5,7 +5,10 @@ pipeline {
             args '-u root' // to run as root for installing packages
         }
     }
-   parameters {
+    tools {
+        docker 'docker'  // Use the Docker tool configured in Jenkins
+    }
+    parameters {
         booleanParam(name: 'BUILD_MFE_SHELL', defaultValue: false, description: 'Build mfe-shell')
         booleanParam(name: 'BUILD_GYM_TRACKER', defaultValue: false, description: 'Build gym-tracker')
         booleanParam(name: 'BUILD_MEAL_PLANNER', defaultValue: false, description: 'Build meal-planner')
