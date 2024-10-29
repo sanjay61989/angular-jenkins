@@ -65,7 +65,9 @@ pipeline {
             steps {
                 script {
                     // Use a Dockerfile to build the Nginx image
-                    sh 'docker build -t my-nginx-image .'
+                    dir('myapp/mfe-shell') {
+                        sh 'docker build -t my-nginx-image .'
+                    }
                 }
             }
         }
