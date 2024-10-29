@@ -5,7 +5,7 @@ pipeline {
     }
     stages {
         stage('Node Config') {
-            script {
+            steps {
                     try {
                         sh 'npm config ls'
                     } catch (Exception e) {
