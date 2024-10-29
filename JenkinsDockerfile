@@ -75,12 +75,12 @@ pipeline {
                     }                    
                 }            
             }
-        }
-        stage('cleanup') {
-              steps {                
-                script {
-                    cleanWs()
-                }
+        }       
+    }
+    post {
+        always {
+            script {
+                cleanWs()
             }
         }
     }
