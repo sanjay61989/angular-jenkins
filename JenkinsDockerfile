@@ -68,8 +68,8 @@ pipeline {
                          cp -r /tmp/build/mfe-shell/* /usr/share/nginx/html
                          cp /var/lib/jenkins/workspace/myapp/nginx.conf /etc/nginx/nginx.conf
                          nginx -t
-                         systemctl stop nginx
-                         systemctl start nginx
+                         sudo systemctl stop nginx
+                         sudo systemctl start nginx
                         echo "Nginx deployment completed successfully."
                     '''
                     }                    
